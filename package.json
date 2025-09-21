@@ -1,0 +1,47 @@
+{
+  "name": "restaurant-pos-cloud",
+  "version": "1.0.0",
+  "description": "Advanced cloud-based restaurant point of sale system with mobile support",
+  "main": "server/src/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "start": "cd server && npm start",
+    "test": "npm run test:server && npm run test:client",
+    "test:server": "cd server && npm test",
+    "test:client": "cd client && npm test",
+    "lint": "eslint . --ext .js,.ts,.tsx",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "keywords": [
+    "restaurant",
+    "pos",
+    "point-of-sale",
+    "cloud",
+    "mobile",
+    "orders",
+    "payments",
+    "inventory",
+    "analytics"
+  ],
+  "author": "Restaurant POS Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "eslint": "^8.45.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "prettier": "^3.0.0"
+  },
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ]
+}
