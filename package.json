@@ -33,11 +33,11 @@
   "author": "Restaurant POS Team",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^8.2.0",
-    "eslint": "^8.45.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "prettier": "^3.0.0"
+    "@typescript-eslint/eslint-plugin": "^8.44.0",
+    "@typescript-eslint/parser": "^8.44.0",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.36.0",
+    "prettier": "^3.6.2"
   },
   "workspaces": [
     "client",

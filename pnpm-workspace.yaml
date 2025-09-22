@@ -1,0 +1,15 @@
+# Blue Team Sport Bar POS - pnpm Workspace Configuration
+# This file defines the workspace structure for the monorepo
+
+packages:
+  # Main packages
+  - 'client'
+  - 'server'
+  - 'shared'
+  
+  # Additional packages
+  - 'database'
+  - 'docs'
+  
+  # Exclude any nested node_modules
+  - '!**/node_modules/**'
