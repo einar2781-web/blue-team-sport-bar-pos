@@ -1,14 +1,14 @@
 version: '3.8'
 
 services:
-  # PostgreSQL Database
+  # PostgreSQL Database for Blue Team Sport Bar POS
   postgres:
-    image: postgres:15
-    container_name: restaurant_pos_db
+    image: postgres:15-alpine
+    container_name: blue_team_pos_db
     environment:
-      POSTGRES_USER: restaurant_user
-      POSTGRES_PASSWORD: restaurant_password
-      POSTGRES_DB: restaurant_pos
+      POSTGRES_USER: blue_team_user
+      POSTGRES_PASSWORD: blue_team_password_2024
+      POSTGRES_DB: blue_team_pos
       POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "5432:5432"
@@ -16,29 +16,29 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./database/init:/docker-entrypoint-initdb.d
     networks:
-      - restaurant_network
+      - blue_team_network
 
-  # Redis Cache
+  # Redis Cache for Blue Team Sport Bar POS
   redis:
     image: redis:7-alpine
-    container_name: restaurant_pos_cache
+    container_name: blue_team_pos_cache
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
     networks:
-      - restaurant_network
+      - blue_team_network
 
   # Backend API Server
   server:
     build:
       context: ./server
       dockerfile: Dockerfile
-    container_name: restaurant_pos_server
+    container_name: blue_team_pos_server
     environment:
       NODE_ENV: development
-      PORT: 3001
-      DATABASE_URL: postgresql://restaurant_user:restaurant_password@postgres:5432/restaurant_pos
+      PORT: 8000
+      DATABASE_URL: postgresql://blue_team_user:blue_team_password_2024@postgres:5432/blue_team_pos
       REDIS_URL: redis://redis:6379
       JWT_SECRET: your-super-secret-jwt-key-change-in-production
       STRIPE_SECRET_KEY: sk_test_your_stripe_secret_key
@@ -99,5 +99,5 @@ volumes:
   redis_data:
 
 networks:
-  restaurant_network:
+  blue_team_network:
     driver: bridge
